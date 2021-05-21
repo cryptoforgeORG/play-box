@@ -26,7 +26,6 @@ services:
 
     mem_limit: 512M
     mem_reservation: 256M
-    cpus: 0.5
     ports:
       - "8080:8080"
       - "3000:3000"
