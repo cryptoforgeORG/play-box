@@ -33,7 +33,7 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get install -y nodejs
 
 
-RUN git clone https://github.com/masterial/play-platform-relay /relay/
+RUN git clone https://github.com/pay2play/play-platform-relay /relay/
 
 WORKDIR /relay
 
@@ -52,4 +52,4 @@ COPY ./docker/game_supervisor.conf /etc/supervisor.d/game_supervisor.ini
 
 COPY ./src/server/controllers/bash /relay/dist/bash
 
-ENTRYPOINT [ "bash", "/relay/docker/entrypoint.game.sh" ]
+ENTRYPOINT [ "bash", "/relay/docker/entrypoint.sh" ]
