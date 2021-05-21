@@ -1,3 +1,4 @@
 ---
 relay_path: "/relay"
+git_repo: "git@github.com:pay2play/play-platform-game.git"
 git_branch: "main"
