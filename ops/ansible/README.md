@@ -8,11 +8,10 @@ pip install boto boto3 botocore
 
 ### Configs
 ```
-code ops.ansible/playbooks/group_vars/all.yml 
+code ops/ansible/playbooks/group_vars/all.yml 
 ```
 
-## Instructions
-### Ansible
+### Instructions
 ```
 cd ops/ansible
 ansible-playbook -i inventory/hosts playbooks/start-cluster.yml
