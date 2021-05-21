@@ -3,20 +3,6 @@ volumes:
   node_modules:
 
 services:
-  game:
-    build:
-      context: .
-      dockerfile: Dockerfile.game
-    volumes:
-      - /relay/node_modules
-    mem_limit: 2048M
-    mem_reservation: 2048M
-    ports:
-      - "8443:8443"
-    command: "npm start"
-    env_file:
-      - /etc/environment
-
   relay:
     build:
       context: .
@@ -41,5 +27,19 @@ services:
       - TRIBES_HOST=$TRIBES_HOST
       - MEDIA_HOST=$MEDIA_HOST
       - MACAROON_LOCATION=$MACAROON_LOCATION
+    env_file:
+      - /etc/environment
+
+  game:
+    build:
+      context: .
+      dockerfile: Dockerfile.game
+    volumes:
+      - /relay/node_modules
+    mem_limit: 2048M
+    mem_reservation: 2048M
+    ports:
+      - "8443:8443"
+    command: "npm start"
     env_file:
       - /etc/environment
