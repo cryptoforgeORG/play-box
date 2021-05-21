@@ -33,9 +33,9 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get install -y nodejs
 
 
-RUN git clone https://github.com/pay2play/play-platform-relay /relay/
+RUN git clone https://github.com/pay2play/play-platform-game /game/
 
-WORKDIR /relay
+WORKDIR /game
 
 ARG branch="main"
 
@@ -44,12 +44,12 @@ RUN git checkout $branch
 RUN npm install
 RUN npm run build
 
-WORKDIR /relay/
+WORKDIR /game
 
 RUN mkdir -p /var/log/supervisor
 COPY ./docker/supervisord.conf /etc/supervisord.conf
 COPY ./docker/game_supervisor.conf /etc/supervisor.d/game_supervisor.ini
 
-COPY ./src/server/controllers/bash /relay/dist/bash
+COPY ./src/server/controllers/bash /game/dist/bash
 
-ENTRYPOINT [ "bash", "/relay/docker/entrypoint.sh" ]
+ENTRYPOINT [ "bash", "/game/docker/entrypoint.sh" ]

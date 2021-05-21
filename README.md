@@ -1,4 +1,4 @@
-# play-platform-relay
+# play-platform-game
 
 ## Deployment
 To start see [Deploy](ops/ansible/README.md)

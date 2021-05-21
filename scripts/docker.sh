@@ -46,7 +46,7 @@ do
             ;;
 
         "import_lnd.tar.gz")
-            cmd="docker cp $(docker ps -q):/relay/lnd.tar.gz /relay/lnd.tar.gz"
+            cmd="docker cp $(docker ps -q):/game/lnd.tar.gz /game/lnd.tar.gz"
             echo $cmd
             $cmd            
             ;;

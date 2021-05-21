@@ -82,7 +82,7 @@
     create: yes
     state: present
     regexp: "^MACAROON_LOCATION"
-    line: "MACAROON_LOCATION=/relay/.lnd/data/chain/bitcoin/testnet/admin.macaroon"
+    line: "MACAROON_LOCATION=/game/.lnd/data/chain/bitcoin/testnet/admin.macaroon"
   become: yes
   when: hostvars[inventory_hostname].testnet
 
@@ -97,7 +97,7 @@
 
 - name: Mkdir client path dir
   file:
-    path: "{{ relay_path }}"
+    path: "{{ game_path }}"
     state: directory
     owner: ubuntu
   become: true
@@ -145,29 +145,22 @@
   git: >
     repo={{ git_repo }}
     key_file=/root/.ssh/id_rsa.github
-    dest={{ relay_path }}
+    dest={{ game_path }}
     version={{ git_branch }}
     force=yes
     update=yes
   become: yes
 
 - name: Start container
-  shell: "cd /relay && docker-compose up -d"
+  shell: "cd /game && docker-compose up -d"
   become: yes
   when: not hostvars[inventory_hostname].testnet
 
 - name: Start container [testnet]
-  shell: "cd /relay && docker-compose -f docker-compose-testnet.yml up -d"
+  shell: "cd /game && docker-compose -f docker-compose-testnet.yml up -d"
   become: yes
   when: hostvars[inventory_hostname].testnet
 
 - name: Timeout
   pause:
     seconds: 10
-# - name: Get connection_string.txt
-#   shell: "docker exec -it $(docker ps --latest --quiet) cat /relay/connection_string.txt"
-#   register: shell_result
-#   become: yes
-
-# - name: Get connection_string.txt
-#   debug: var=shell_result.stdout_lines

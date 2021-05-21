@@ -7,7 +7,7 @@ select opt in "${options[@]}"
 do
     case $opt in
         "import_lnd.tar.gz")
-            cmd="scp -i ~/.ssh/n2n2 -r root@relay-1.playentertainment.online:/relay/lnd.tar.gz ."
+            cmd="scp -i ~/.ssh/n2n2 -r root@game-1.playentertainment.online:/game/lnd.tar.gz ."
             echo $cmd
             $cmd            
             ;;

@@ -4,31 +4,15 @@
 
 function_menu_logs () {
   PS3='Please enter your choice: '
-    options=("log_lnd" "log_relay" "log_game" "log_tor" "quit")
+    options=("log_game" "quit")
     select opt in "${options[@]}"
     do
         case $opt in
-            "log_lnd")
-                cmd="tail -f /var/log/supervisor/lnd.log"
-                echo $cmd
-                $cmd            
-                ;;
-            "log_relay")
-                cmd="tail -f /var/log/supervisor/relay.log"
-                echo $cmd
-                $cmd          
-                ;;
             "log_game")
                 cmd="tail -f /var/log/supervisor/game.log"
                 echo $cmd
                 $cmd          
                 ;;
-            "log_tor")
-                cmd="tail -f /var/log/supervisor/tor.log"
-                echo $cmd
-                $cmd          
-                ;;
-
             "quit")
                 break
                 ;;
@@ -43,31 +27,15 @@ function_menu_logs () {
 
 function_menu_restart () {
   PS3='Please enter your choice: '
-    options=("restart_lnd" "restart_relay" "restart_game" "restart_tor" "quit")
+    options=("restart_game" "quit")
     select opt in "${options[@]}"
     do
         case $opt in
-            "restart_lnd")
-                cmd="supervisorctl restart lnd"
-                echo $cmd
-                $cmd            
-                ;;
-            "restart_relay")
-                cmd="supervisorctl restart relay"
-                echo $cmd
-                $cmd          
-                ;;
             "restart_game")
                 cmd="supervisorctl restart game"
                 echo $cmd
                 $cmd          
                 ;;
-            "restart_tor")
-                cmd="supervisorctl restart tor"
-                echo $cmd
-                $cmd          
-                ;;
-
             "quit")
                 break
                 ;;
@@ -82,53 +50,16 @@ function_menu_restart () {
 
 function_menu_main () {
   PS3='Please enter your choice: '
-    options=("create_wallet" "wallet_balance" "channel_balance" "list_channels" "logs" "restart" "getinfo" "check_tor" "quit")
+    options=("logs" "restart" "quit")
     select opt in "${options[@]}"
     do
         case $opt in
-            "create_wallet")            
-                cmd="lncli --lnddir=/relay/.lnd/ --macaroonpath=/relay/.lnd/data/chain/bitcoin/testnet/admin.macaroon newaddress p2wkh"
-                echo $cmd
-                $cmd
-                ;;
-            "wallet_balance")
-                cmd="lncli --lnddir=/relay/.lnd/ --macaroonpath=/relay/.lnd/data/chain/bitcoin/testnet/admin.macaroon walletbalance"
-                echo $cmd
-                $cmd
-                ;;
-            "channel_balance")
-                cmd="lncli --lnddir=/relay/.lnd/ --macaroonpath=/relay/.lnd/data/chain/bitcoin/testnet/admin.macaroon channelbalance"
-                echo $cmd
-                $cmd            
-                ;;
-            "list_channels")
-                cmd="lncli --lnddir=/relay/.lnd/ --macaroonpath=/relay/.lnd/data/chain/bitcoin/testnet/admin.macaroon listchannels"
-                echo $cmd
-                $cmd            
-                ;;
             "logs")
                 function_menu_logs       
-                ;;
-            # "connection_string")
-            #     cmd="cat /relay/connection_string.txt "
-            #     echo $cmd
-            #     $cmd            
-            #     ;;         
+                ;;     
             "restart")
                 function_menu_restart       
                 ;;
-            "getinfo")
-                cmd="lncli --lnddir=/relay/.lnd/ --macaroonpath=/relay/.lnd/data/chain/bitcoin/testnet/admin.macaroon getinfo"
-                echo $cmd
-                $cmd            
-                ;;
-                
-            "check_tor")
-                cmd="curl --socks5 localhost:9050 --socks5-hostname localhost:9050 -s https://check.torproject.org/ | cat | grep -m 1 Congratulations | xargs"
-                echo $cmd
-                $cmd            
-                ;;
-
             "quit")
                 break
                 ;;

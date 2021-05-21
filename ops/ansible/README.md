@@ -1,4 +1,4 @@
-# Play Relay Cluster
+# Deploy Game Cluster
 
 ## Prerequisites
 ```
