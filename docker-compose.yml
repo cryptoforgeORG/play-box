@@ -8,7 +8,7 @@ services:
       context: .
       dockerfile: Dockerfile.relay
     volumes:
-      - /relay/node_modules
+      - node_modules:/relay/node_modules.relay
 
     mem_limit: 512M
     mem_reservation: 256M
@@ -35,7 +35,7 @@ services:
       context: .
       dockerfile: Dockerfile.game
     volumes:
-      - /relay/node_modules
+      - node_modules:/relay/node_modules
     mem_limit: 2048M
     mem_reservation: 2048M
     ports:
