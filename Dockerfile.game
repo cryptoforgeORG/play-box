@@ -1,0 +1,55 @@
+FROM ubuntu:bionic as final
+
+EXPOSE 80
+EXPOSE 8443
+
+RUN apt-get update
+
+RUN apt-get install -y \
+    apt-transport-https \
+    autoconf  \
+    automake \
+    ca-certificates \
+    curl \
+    dirmngr \
+    g++ \
+    gcc \
+    git \
+    jq \
+    make \
+    nasm  \
+    libmcrypt-dev \
+    libpng-dev\
+    libwebp-dev \
+    lsb-release \
+    python \
+    unzip \
+    vim \
+    wget \
+    supervisor
+
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+
+RUN apt-get install -y nodejs
+
+
+RUN git clone https://github.com/masterial/play-platform-relay /relay/
+
+WORKDIR /relay
+
+ARG branch="main"
+
+RUN git checkout $branch
+
+RUN npm install
+RUN npm run build
+
+WORKDIR /relay/
+
+RUN mkdir -p /var/log/supervisor
+COPY ./docker/supervisord.conf /etc/supervisord.conf
+COPY ./docker/game_supervisor.conf /etc/supervisor.d/game_supervisor.ini
+
+COPY ./src/server/controllers/bash /relay/dist/bash
+
+ENTRYPOINT [ "bash", "/relay/docker/entrypoint.game.sh" ]

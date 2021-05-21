@@ -1,0 +1,3 @@
+---
+cluster_configs:
+  - { instance_type: "c4.large", instance_name: "relay-1", testnet: false }
