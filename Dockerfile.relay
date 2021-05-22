@@ -103,10 +103,12 @@ RUN apk --no-cache add expect bash
 
 RUN mkdir -p /var/log/supervisor
 
+RUN mkdir -p /etc/supervisor.d/
+RUN mkdir -p /relay/.lnd
+
 RUN cp ./docker/lnd.conf.sample /relay/.lnd/lnd.conf
 RUN cp ./docker/torrc.default /etc/tor/torrc
 RUN cp ./docker/supervisord.conf /etc/supervisord.conf
-RUN mkdir -p /etc/supervisor.d/
 RUN cp ./docker/lnd_supervisor.conf /etc/supervisor.d/lnd_supervisor.ini
 RUN cp ./docker/relay_supervisor.conf /etc/supervisor.d/relay_supervisor.ini
 RUN cp ./docker/tor_supervisor.conf /etc/supervisor.d/tor_supervisor.ini
