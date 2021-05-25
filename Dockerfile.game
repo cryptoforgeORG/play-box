@@ -1,6 +1,7 @@
 FROM ubuntu:bionic as final
 
 EXPOSE 80
+EXPOSE 8000
 EXPOSE 8443
 
 RUN apt-get update

@@ -42,7 +42,7 @@ export const deploy = {
 
         console.log("url", url);
 
-        child = spawn("sh", [script, url]);
+        child = spawn("sh", [script, url], { env: { ...process.env } });
 
         child.stdout.on("data", function (data: any) {
           console.log("stdout: " + data);
@@ -70,7 +70,7 @@ export const deploy = {
     } else {
       console.log("url", url);
 
-      child = spawn("sh", [script, url]);
+      child = spawn("sh", [script, url], { env: { ...process.env } });
 
       child.stdout.on("data", function (data: any) {
         console.log("stdout: " + data);
@@ -146,10 +146,7 @@ export const deploy = {
 
     const script = path.dirname(__filename) + "/bash/" + "deploy.sh";
 
-    let child = spawn("sh", [script, url], {
-      detached: true,
-      stdio: "inherit",
-    });
+    child = spawn("sh", [script, url], { env: { ...process.env } });
 
     child.on("close", function (code: string) {
       console.log("child process exited with code " + code);
@@ -254,7 +251,7 @@ export const deploy = {
 
     const script = path.dirname(__filename) + "/bash/" + "start.sh";
 
-    var child = spawn("sh", [script]);
+    var child = spawn("sh", [script], { env: { ...process.env } });
 
     child.stdout.on("data", function (data: any) {
       console.log("stdout: " + data);

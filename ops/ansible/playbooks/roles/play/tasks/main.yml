@@ -56,6 +56,15 @@
   become: yes
   when: hostvars[inventory_hostname].testnet
 
+- name: Set PHOTON_APP_IP
+  lineinfile:
+    dest: /etc/environment
+    create: yes
+    state: present
+    regexp: "^PHOTON_APP_IP"
+    line: "PHOTON_APP_IP={{ hostvars[inventory_hostname].photon_app_id }}"
+  become: yes
+
 - name: Set MEDIA_HOST
   lineinfile:
     dest: /etc/environment
@@ -85,6 +94,16 @@
     line: "MACAROON_LOCATION=/game/.lnd/data/chain/bitcoin/testnet/admin.macaroon"
   become: yes
   when: hostvars[inventory_hostname].testnet
+
+- name: Set MACAROON_LOCATION
+  lineinfile:
+    dest: /etc/environment
+    create: yes
+    state: present
+    regexp: "^MACAROON_LOCATION"
+    line: "MACAROON_LOCATION=/game/.lnd/data/chain/bitcoin/mainnet/admin.macaroon"
+  become: yes
+  when: not hostvars[inventory_hostname].testnet
 
 - name: Set SOCKET_ENDPOINT
   lineinfile:
