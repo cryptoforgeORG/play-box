@@ -38,6 +38,7 @@ echo "start master-client-headless instance"
 # screen -dmS MOC ./masters-of-conquest-headless.x86_64 -quit -batchmode -nographics -logfile log.txt
 
 cmd="./masters-of-conquest-headless.x86_64 -quit -batchmode -nographics -logfile -photon ${PHOTON_APP_ID}"
+echo $cmd
 # nohup $cmd > moc.out 2>&1
 nohup $cmd > moc.log 2>&1 </dev/null &
 # ln -s moc.log ../public/logs/moc.log

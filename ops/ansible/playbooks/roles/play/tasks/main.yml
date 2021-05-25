@@ -56,13 +56,13 @@
   become: yes
   when: hostvars[inventory_hostname].testnet
 
-- name: Set PHOTON_APP_IP
+- name: Set PHOTON_APP_ID
   lineinfile:
     dest: /etc/environment
     create: yes
     state: present
-    regexp: "^PHOTON_APP_IP"
-    line: "PHOTON_APP_IP={{ hostvars[inventory_hostname].photon_app_id }}"
+    regexp: "^PHOTON_APP_ID"
+    line: "PHOTON_APP_ID={{ hostvars[inventory_hostname].photon_app_id }}"
   become: yes
 
 - name: Set MEDIA_HOST
