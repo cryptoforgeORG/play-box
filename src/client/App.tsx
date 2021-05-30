@@ -27,7 +27,7 @@ function Menu() {
     <div>
       <h1 className="text-primary text-center">
         Master Relay {greeting} |{" "}
-        <a href="https://www.mastersofconquest.com">Crypto Forge</a>
+        <a href="http://cryptoforge.org">Crypto Forge</a>
       </h1>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link className="navbar-brand" to="/">
