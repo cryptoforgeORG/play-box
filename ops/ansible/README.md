@@ -25,3 +25,8 @@ docker kill $(docker ps -q)
 
 ### Logs
 docker ps -q | xargs -L 1 docker logs -f
+
+### Bash
+```
+ssh -i ~/.ssh/playent.pem ubuntu@game-1.playentertainment.online
+```
