@@ -99,6 +99,18 @@ router.get(
   })
 );
 
+router.get(
+  "/get_env",
+  authenticate,
+  asyncErrorHandler(async (req: any, res: any) => {
+    res.status(200).json({
+      env: {
+        photon_app_id: process.env.PHOTON_APP_ID
+      }
+    });
+  })
+);
+
 router.get("/test", (req: any, res: any) => {
   const { spawn } = require("child_process");
 

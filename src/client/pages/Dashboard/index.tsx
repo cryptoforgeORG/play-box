@@ -18,11 +18,16 @@ type Props = {
 };
 
 const Interface: React.FunctionComponent = () => {
-  const store = useLocalStore(() => ({ url: "", build: {} as any }));
+  const store = useLocalStore(() => ({
+    url: "",
+    build: {} as any,
+    env: {} as any,
+  }));
   // let heartbeat = {};
 
   useEffect(() => {
     retrieveBuildUrl();
+    retriveENV();
   });
 
   const retrieveBuildUrl = async () => {
@@ -36,6 +41,15 @@ const Interface: React.FunctionComponent = () => {
     }
   };
 
+  const retriveENV = async () => {
+    const response = await axios.get(`/api/get_env`, {});
+
+    if (response.status === 200) {
+      console.log(response);
+      store.env = camelcaseKeys(response.data.env, { deep: true });
+    }
+  };
+
   return (
     <>
       <Observer>
@@ -43,6 +57,10 @@ const Interface: React.FunctionComponent = () => {
           <div>
             <a href={store.url}>Download Master Build {store.build.version}</a>
             <table>
+              <tr>
+                <td>photonAppId:</td>
+                <td>{store.env.photonAppId}</td>
+              </tr>
               <tr>
                 <td>enableOverlords:</td>
                 <td>{store.build.enableOverlords ? "true" : "false"}</td>
