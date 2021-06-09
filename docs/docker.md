@@ -19,3 +19,13 @@ docker push cryptoforge/n2n2-relay:latest
 
 docker-compose up
 ```
+
+```
+docker build -t sphinx-relay -f Dockerfile.mainnet .
+
+docker login -u cryptoforge
+docker tag sphinx-relay:latest cryptoforge/sphinx-relay:latest  
+docker push cryptoforge/sphinx-relay:latest 
+
+docker-compose up
+```

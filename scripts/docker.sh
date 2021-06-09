@@ -30,14 +30,14 @@ function_menu_bash () {
 }
 
 PS3='Please enter your choice: '
-options=("bash" "reset" "logs" "kill" "start_mainnet" "import_lnd.tar.gz" "quit")
+options=("bash" "purge" "logs" "kill" "start_mainnet" "import_lnd.tar.gz" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
         "bash")            
             function_menu_bash 
             ;;
-        "reset")
+        "purge")
             cmd="docker system prune -a"
             echo $cmd
             $cmd

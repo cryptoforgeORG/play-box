@@ -25,6 +25,7 @@ services:
       - "8333:8333"
 
     command: "lnd --accept-keysend --configfile=/relay/.lnd/lnd.conf && npm start"
+
     environment:
       - NODE_ENV=production
       - PORT=3000
@@ -44,6 +45,7 @@ services:
       dockerfile: Dockerfile.game
     # volumes:
     #   - node_modules:/relay/node_modules
+
     mem_limit: 2048M
     mem_reservation: 2048M
     ports:
