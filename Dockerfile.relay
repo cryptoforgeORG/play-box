@@ -32,6 +32,7 @@ RUN apk update && apk add \
 EXPOSE 9050
 EXPOSE 9051
 
+COPY torrc.default /etc/tor/torrc
 RUN chown -R tor /etc/tor
 
 # RUN apt update && apt install -y curl gpg wget && \
@@ -64,9 +65,10 @@ RUN git clone https://github.com/n2n2dev/n2n2-relay /relay/
 
 WORKDIR /relay/
 
-ARG play_checkout="feature/tenants"
+ARG n2n2_checkout="staging"
+ARG n2n2_checkout="feature/tenants"
 
-RUN git checkout $play_checkout
+RUN git checkout $n2n2_checkout
 
 RUN apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python jq git curl libmcrypt-dev
 
@@ -86,6 +88,8 @@ RUN npm run tsc
 
 VOLUME /relay/.lnd
 
+COPY ./docker/lnd.conf.testnet.sample /relay/.lnd/lnd.conf
+
 #Uncomment if you have a copy of the channel.db you want to use.
 #COPY ./channel.db /relay/.lnd/data/graph/mainnet/
 
@@ -102,17 +106,11 @@ WORKDIR /relay/
 RUN apk --no-cache add expect bash
 
 RUN mkdir -p /var/log/supervisor
-
-RUN mkdir -p /etc/supervisor.d/
-RUN mkdir -p /relay/.lnd
-
-RUN cp ./docker/lnd.conf.sample /relay/.lnd/lnd.conf
-RUN cp ./docker/torrc.default /etc/tor/torrc
-RUN cp ./docker/supervisord.conf /etc/supervisord.conf
-RUN cp ./docker/lnd_supervisor.conf /etc/supervisor.d/lnd_supervisor.ini
-RUN cp ./docker/relay_supervisor.conf /etc/supervisor.d/relay_supervisor.ini
-RUN cp ./docker/tor_supervisor.conf /etc/supervisor.d/tor_supervisor.ini
-RUN cp ./docker/aliases.sh /etc/profile.d/aliases.sh
+COPY ./docker/supervisord.conf /etc/supervisord.conf
+COPY ./docker/lnd_supervisor.conf /etc/supervisor.d/lnd_supervisor.ini
+COPY ./docker/relay_supervisor.conf /etc/supervisor.d/relay_supervisor.ini
+COPY ./docker/tor_supervisor.conf /etc/supervisor.d/tor_supervisor.ini
+COPY ./docker/aliases.sh /etc/profile.d/aliases.sh
 
 CMD touch ./sphinx.db
 

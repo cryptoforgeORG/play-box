@@ -4,12 +4,16 @@ volumes:
 
 services:
   relay:
+    # container_name: relay
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile.relay
+    # # volumes:
+    # #   - node_modules:/relay/node_modules.relay
+
     container_name: relay
-    build:
-      context: .
-      dockerfile: Dockerfile.relay
-    # volumes:
-    #   - node_modules:/relay/node_modules.relay
+    image: cryptoforge/n2n2-relay
+
     mem_limit: 512M
     mem_reservation: 256M
 
@@ -18,6 +22,7 @@ services:
       - "3000:3000"
       - "9735:9735"
       - "10009:10009"
+
     command: "lnd --accept-keysend --configfile=/relay/.lnd/lnd.conf && npm start"
     environment:
       - NODE_ENV=production
