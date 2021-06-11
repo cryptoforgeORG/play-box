@@ -9,12 +9,10 @@ To start see [Docker](docs/docker.md)
 
 ``` Game
 http://game-1.playentertainment.online:8443/
-
 ```
 
 ``` Relay
-http://game-1.playentertainment.online:3000/
-
+http://game-1.playentertainment.online:3000/connect
 ```
 
 We accept donations! :)
