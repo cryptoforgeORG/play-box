@@ -50,14 +50,14 @@ const Interface: React.FunctionComponent = () => {
     }
   };
 
-  const relayUrl = async () => {
+  const relayUrl = () => {
     let words = window.location.href.split(":");
-    return `${words[0]}+${words[1]}:3000`;
+    return `${words[0]}:${words[1]}:3000`;
   };
 
-  const thunderUrl = async () => {
+  const thunderUrl = () => {
     let words = window.location.href.split(":");
-    return `${words[0]}+${words[1]}:3001`;
+    return `${words[0]}:${words[1]}:3001`;
   };
 
   return (
@@ -65,10 +65,20 @@ const Interface: React.FunctionComponent = () => {
       <Observer>
         {() => (
           <div>
-            <a href={`${relayUrl()}`}>Relay</a>
-            <a href={`${thunderUrl()}`}>Thunderhub</a>
             <a href={store.url}>Download Master Build {store.build.version}</a>
             <table>
+              <tr>
+                <td>
+                  <a href={`${relayUrl()}`}>Relay</a>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <a href={`${thunderUrl()}`}>Thunderhub</a>
+                </td>
+                <td></td>
+              </tr>
               <tr>
                 <td>photonAppId:</td>
                 <td>{store.env.photonAppId}</td>
