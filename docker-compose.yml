@@ -42,6 +42,16 @@ services:
     env_file:
       - /etc/environment
 
+  thunderhub:
+    container_name: thunderhub
+    image: apotdevin/thunderhub:v0.12.19
+    ports:
+      - "3001:3000"
+
+    volumes:
+      # - .:/relay
+      - .lnd/:/relay/.lnd
+
   game:
     container_name: game
     build:

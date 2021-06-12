@@ -55,12 +55,18 @@ const Interface: React.FunctionComponent = () => {
     return `${words[0]}+${words[1]}:3000`;
   };
 
+  const thunderUrl = async () => {
+    let words = window.location.href.split(":");
+    return `${words[0]}+${words[1]}:3001`;
+  };
+
   return (
     <>
       <Observer>
         {() => (
           <div>
             <a href={`${relayUrl()}`}>Relay</a>
+            <a href={`${thunderUrl()}`}>Thunderhub</a>
             <a href={store.url}>Download Master Build {store.build.version}</a>
             <table>
               <tr>

@@ -18,7 +18,7 @@ router.post('/login', (req: any, res: any) => {
 
   console.log(req.body);
 
-  if (user === process.env.PASSWORD && password === process.env.PASSWORD) {
+  if (user === process.env.DASHBOARD_USERNAME && password === process.env.DASHBOARD_PASSWORD) {
     res.cookie('cookie', 'PLAY_COOKIE');
 
     return res.json({
