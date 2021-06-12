@@ -30,7 +30,7 @@ function_menu_bash () {
 }
 
 PS3='Please enter your choice: '
-options=("bash" "purge" "logs" "kill" "start_mainnet" "import_lnd.tar.gz" "quit")
+options=("bash" "purge" "logs" "kill" "start_mainnet" "push_backup" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -59,8 +59,8 @@ do
             $cmd            
             ;;
 
-        "import_lnd.tar.gz")
-            cmd="docker cp $(docker ps -q):/game/lnd.tar.gz /game/lnd.tar.gz"
+        "push_backup")
+            cmd="docker cp $(docker ps -q):/game/backup.tar.gz /relay/bnackup.tar.gz"
             echo $cmd
             $cmd            
             ;;

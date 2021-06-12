@@ -2,7 +2,7 @@
 # Bash Menu Script Example
 
 PS3='Please enter your choice: '
-options=("ssh_game_1" "import_lnd.tar.gz" "reveal" "quit")
+options=("ssh_game_1" "push_backup" "pull_backup" "reveal" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -12,8 +12,14 @@ do
             $cmd            
             ;;
 
-        "import_lnd.tar.gz")
-            cmd="scp -i ~/.ssh/playent.pem -r root@game-1.playentertainment.online:/game/lnd.tar.gz ."
+        "push_backup")
+            cmd="scp -i ~/.ssh/playent.pem -r ./backups/backup_n2n2-relay-0.tar.gz ubuntu@game-1.playentertainment.online:/game/backup.tar.gz"
+            echo $cmd
+            $cmd            
+            ;;
+
+        "pull_backup")
+            cmd="scp -i ~/.ssh/playent.pem -r ubuntu@relay-1.n2n2.chat:/game/backup.tar.gz ."
             echo $cmd
             $cmd            
             ;;
