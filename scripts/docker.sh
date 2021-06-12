@@ -30,7 +30,7 @@ function_menu_bash () {
 }
 
 PS3='Please enter your choice: '
-options=("bash" "purge" "logs" "kill" "start_mainnet" "import_lnd.tar.gz" "quit")
+options=("bash" "purge" "logs" "kill" "start_mainnet" "push_backup" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
