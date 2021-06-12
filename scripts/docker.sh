@@ -3,7 +3,7 @@
 
 function_menu_bash () {
   PS3='Please enter your choice: '
-    options=("bash_game" "bash_relay" "quit")
+    options=("bash_game" "bash_thunderhub" "bash_relay" "quit")
     select opt in "${options[@]}"
     do
         case $opt in
