@@ -63,7 +63,7 @@ do
             cmd="export CTR_ID=$(docker ps -q -f name=relay)"
             echo $cmd
             $cmd   
-            cmd="docker cp /game/backup.tar.gz $CTR_ID:/relay/backup.tar.gz"
+            cmd="docker cp /game/import.tar.gz $CTR_ID:/relay/import.tar.gz"
             echo $cmd
             $cmd            
             ;;
