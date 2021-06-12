@@ -52,7 +52,7 @@ const Interface: React.FunctionComponent = () => {
 
   const relayUrl = () => {
     let words = window.location.href.split(":");
-    return `${words[0]}:${words[1]}:3000`;
+    return `${words[0]}:${words[1]}:3000/connect`;
   };
 
   const thunderUrl = () => {

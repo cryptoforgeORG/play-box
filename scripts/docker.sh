@@ -12,6 +12,11 @@ function_menu_bash () {
                 echo $cmd
                 $cmd          
                 ;;
+            "bash_thunderhub")
+                cmd="docker exec -it relay bash"
+                echo $cmd
+                $cmd          
+                ;;
             "bash_relay")
                 cmd="docker exec -it relay bash"
                 echo $cmd
