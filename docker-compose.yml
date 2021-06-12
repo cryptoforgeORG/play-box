@@ -52,6 +52,9 @@ services:
       # - .:/relay
       - .lnd/:/relay/.lnd
 
+    env_file:
+      - /etc/environment
+
   game:
     container_name: game
     build:
