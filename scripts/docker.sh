@@ -60,7 +60,7 @@ do
             ;;
 
         "push_backup")
-            cmd="CTR_ID=$(docker ps -q -f name=relay)"
+            cmd="export CTR_ID=$(docker ps -q -f name=relay)"
             echo $cmd
             $cmd   
             cmd="docker cp /game/backup.tar.gz $CTR_ID:/relay/backup.tar.gz"
