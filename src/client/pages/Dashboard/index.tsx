@@ -50,11 +50,17 @@ const Interface: React.FunctionComponent = () => {
     }
   };
 
+  const relayUrl = async () => {
+    let words = window.location.href.split(":");
+    return `${words[0]}+${words[1]}:3000`;
+  };
+
   return (
     <>
       <Observer>
         {() => (
           <div>
+            <a href={`${relayUrl()}`}>Relay</a>
             <a href={store.url}>Download Master Build {store.build.version}</a>
             <table>
               <tr>
