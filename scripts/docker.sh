@@ -60,7 +60,7 @@ do
             ;;
 
         "push_backup")
-            cmd="docker cp $(docker ps -q):/game/backup.tar.gz /relay/bnackup.tar.gz"
+            cmd="docker cp $(docker ps -q):/game/backup.tar.gz /relay/backup.tar.gz"
             echo $cmd
             $cmd            
             ;;
