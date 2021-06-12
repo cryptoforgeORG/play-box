@@ -10,6 +10,9 @@ services:
     #   dockerfile: Dockerfile.relay
     # # volumes:
     # #   - node_modules:/relay/node_modules.relay
+    volumes:
+      # - .:/relay
+      - .lnd/:/relay/.lnd
 
     container_name: relay
     image: cryptoforge/n2n2-relay
@@ -35,6 +38,7 @@ services:
       - TRIBES_HOST=$TRIBES_HOST
       - MEDIA_HOST=$MEDIA_HOST
       - MACAROON_LOCATION=$MACAROON_LOCATION
+
     env_file:
       - /etc/environment
 

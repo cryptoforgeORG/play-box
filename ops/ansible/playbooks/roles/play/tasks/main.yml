@@ -170,6 +170,11 @@
     update=yes
   become: yes
 
+- name: Setup .lnd
+  shell: "cd /game && mkdir .lnd && cp docker/lnd.sample.conf .lnd/lnd.conf"
+  become: yes
+  when: not hostvars[inventory_hostname].testnet
+
 - name: Start container
   shell: "cd /game && docker-compose up -d"
   become: yes
