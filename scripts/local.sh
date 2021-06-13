@@ -19,7 +19,7 @@ do
             ;;
 
         "pull_backup")
-            cmd="scp -i ~/.ssh/playent.pem -r ubuntu@relay-1.n2n2.chat:/game/export.tar.gz ."
+            cmd="scp -i ~/.ssh/playent.pem -r ubuntu@game-1.playentertainment.online:/game/export.tar.gz ."
             echo $cmd
             $cmd            
             ;;
