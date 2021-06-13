@@ -35,7 +35,7 @@ function_menu_bash () {
 }
 
 PS3='Please enter your choice: '
-options=("bash" "purge" "logs_thunderhub" "kill" "start_mainnet" "push_backup" "apply_backup" "quit")
+options=("bash" "purge" "logs_thunderhub" "kill" "start_mainnet" "pull_backup" "push_backup" "apply_backup" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -64,6 +64,15 @@ do
             $cmd            
             ;;
 
+        "pull_backup")
+            cmd="export CTR_ID=$(docker ps -q -f name=relay)"
+            echo $cmd
+            $cmd  
+            cmd="docker cp $CTR_ID:/relay/export.tar.gz /relay/export.tar.gz"
+            echo $cmd
+            $cmd            
+            ;;
+
         "push_backup")
             cmd="export CTR_ID=$(docker ps -q -f name=relay)"
             echo $cmd
@@ -72,6 +81,7 @@ do
             echo $cmd
             $cmd            
             ;;
+            
         "apply_backup")  
             cmd="rm -rf .lnd"
             echo $cmd
