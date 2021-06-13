@@ -35,7 +35,7 @@ function_menu_bash () {
 }
 
 PS3='Please enter your choice: '
-options=("bash" "purge" "logs" "kill" "start_mainnet" "push_backup" "apply_backup" "quit")
+options=("bash" "purge" "logs_thunderhub" "kill" "start_mainnet" "push_backup" "apply_backup" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -47,8 +47,8 @@ do
             echo $cmd
             $cmd
             ;;
-        "logs")
-            cmd="docker ps -q | xargs -L 1 docker logs -f"
+        "logs_thunderhub")
+            cmd="docker logs --follow thunderhub"
             echo $cmd
             $cmd            
             ;;
