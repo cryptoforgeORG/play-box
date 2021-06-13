@@ -6,4 +6,7 @@ node_modules/
 _/
 
 backups
-.lnd
+.lnd/
+
+export.tar.gz
+export/
