@@ -54,7 +54,8 @@ services:
     environment:
       - COOKIE_PATH=/relay/.lnd/.cookie
       # - SSO_SERVER_URL=127.0.0.1:10009
-      - SSO_SERVER_URL=game-1.playentertainment.online:10009
+      # - SSO_SERVER_URL=game-1.playentertainment.online:10009
+      - SSO_SERVER_URL=localhost:10009
       - SSO_CERT_PATH=/relay/.lnd/tls.cert
       - SSO_MACAROON_PATH=/relay/.lnd/data/chain/bitcoin/mainnet
       # - DANGEROUS_NO_SSO_AUTH = 'true' # Default: false
