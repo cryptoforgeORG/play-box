@@ -49,11 +49,16 @@ services:
       - "3001:3000"
 
     volumes:
-      # - .:/relay
       - .lnd/:/relay/.lnd
 
-    env_file:
-      - /etc/environment
+    environment:
+      - SSO_SERVER_URL=0.0.0.0:10009
+      - SSO_CERT_PATH=/relay/.lnd/tls.cert
+      - SSO_MACAROON_PATH=/relay/.lnd/data/chain/bitcoin/mainnet
+      - ACCOUNT_CONFIG_PATH = /relay/.lnd/thubConfig.yaml
+
+    # env_file:
+    #   - /etc/environment
 
   game:
     container_name: game
