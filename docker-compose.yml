@@ -52,12 +52,12 @@ services:
       - .lnd/:/relay/.lnd
 
     environment:
-      - COOKIE_PATH = '/relay/.lnd/.cookie'
+      - COOKIE_PATH=/relay/.lnd/.cookie
       - SSO_SERVER_URL=127.0.0.1:10009
       - SSO_CERT_PATH=/relay/.lnd/tls.cert
       - SSO_MACAROON_PATH=/relay/.lnd/data/chain/bitcoin/mainnet
       # - DANGEROUS_NO_SSO_AUTH = 'true' # Default: false
-      - ACCOUNT_CONFIG_PATH = /relay/.lnd/thubConfig.yaml
+      - ACCOUNT_CONFIG_PATH=/relay/.lnd/thubConfig.yaml
 
     # env_file:
     #   - /etc/environment
