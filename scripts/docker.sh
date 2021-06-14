@@ -104,7 +104,7 @@ do
             cmd="mv .cookie .lnd/.cookie"
             echo $cmd
             $cmd
-            cmd="mv v3_onion_private_keyn.lnd/v3_onion_private_key"
+            cmd="mv v3_onion_private_key .lnd/v3_onion_private_key"
             echo $cmd
             $cmd   
             ;;
