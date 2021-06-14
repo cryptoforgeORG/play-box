@@ -106,7 +106,10 @@ do
             $cmd
             cmd="mv v3_onion_private_key .lnd/v3_onion_private_key"
             echo $cmd
-            $cmd   
+            $cmd 
+            cmd="rm -rf import.tar.gz"
+            echo $cmd
+            $cmd     
             ;;
 
         "quit")
