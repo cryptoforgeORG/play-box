@@ -35,22 +35,6 @@ services:
     env_file:
       - /etc/environment
 
-  thunderhub:
-    container_name: thunderhub
-    image: apotdevin/thunderhub:v0.12.19
-    ports:
-      - "3001:3000"
-
-    volumes:
-      - .lnd/:/relay/.lnd
-
-    environment:
-      - COOKIE_PATH=/relay/.lnd/.cookie
-      - SSO_SERVER_URL=127.0.0.1:10009
-      - SSO_CERT_PATH=/relay/.lnd/tls.cert
-      - SSO_MACAROON_PATH=/relay/.lnd/data/chain/bitcoin/mainnet
-      - ACCOUNT_CONFIG_PATH=/relay/.lnd/thubConfig.yaml
-
   game:
     container_name: game
     build:
