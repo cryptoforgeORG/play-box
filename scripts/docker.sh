@@ -82,13 +82,31 @@ do
             $cmd            
             ;;
             
-        "apply_backup")  
+        "apply_backup")
+            cmd="mv .lnd/thubConfig.yaml ./thubConfig.yaml"
+            echo $cmd
+            $cmd
+            cmd="mv .lnd/.cookie ./.cookie"
+            echo $cmd
+            $cmd
+            cmd="mv .lnd/v3_onion_private_key ./v3_onion_private_key"
+            echo $cmd
+            $cmd
             cmd="rm -rf .lnd"
             echo $cmd
             $cmd
             cmd="tar -xzvf import.tar.gz"
             echo $cmd
-            $cmd       
+            $cmd
+            cmd="mv thubConfig.yaml .lnd/thubConfig.yaml"
+            echo $cmd
+            $cmd
+            cmd="mv .cookie .lnd/.cookie"
+            echo $cmd
+            $cmd
+            cmd="mv v3_onion_private_keyn.lnd/v3_onion_private_key"
+            echo $cmd
+            $cmd   
             ;;
 
         "quit")
