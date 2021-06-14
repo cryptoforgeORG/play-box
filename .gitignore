@@ -10,3 +10,7 @@ backups
 
 export.tar.gz
 export/
+
+thubConfig.yaml
+thubConfig.tpl.yaml
+thubConfig.yaml.j2

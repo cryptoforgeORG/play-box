@@ -189,6 +189,29 @@
   become: yes
   when: not hostvars[inventory_hostname].testnet
 
+# - name: Configure thunderhub.
+#   copy:
+#     dest: /game/.lnd
+#     content: |
+#       {{ lookup('file', 'vars/thubConfig.yml') }}
+
+# - name: Modify thunderhub accounts.
+#   lineinfile:
+#     dest: /game/.lnd/thubConfig.yml
+#     state: present
+#     regexp: "^serverUrl"
+#     line: "NODE_DOMAIN={{ inventory_hostname }}"
+#   become: yes
+
+- name: Modify thunderhub accounts.
+  template: >
+    src=templates/thubConfig.yaml.j2
+    dest=/game/.lnd/thubConfig.yaml
+    owner=root
+    group=root
+    mode=0644
+  become: yes
+
 - name: Start container
   shell: "cd /game && docker-compose up -d"
   become: yes
