@@ -10,7 +10,12 @@ services:
     # Enables the web UI and tells Traefik to listen to docker
     # command: --configFile=/home/ec2-user/sphinx-deploy/traefik.yaml
     command:
-      - "--log.level=DEBUG"
+      # - "--log.level=DEBUG"
+      - "--logLevel=DEBUG"
+      - "--traefikLog.filePath=/var/log/traefik.log"
+      - "--traefikLog.format=json"
+      - "--accessLog.filePath=/var/log/access.log"
+      - "--accessLog.format=json"
     ports:
       # The HTTP port
       - 80:80
