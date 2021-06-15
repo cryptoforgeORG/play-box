@@ -22,7 +22,8 @@ http://game-1.playentertainment.online:3000/connect
     2. Wait for tor (getinfo check)
 2. Restore
     1. kill relay
-    2. apply_backup
+    2. push_backup
+    3. apply_backup
 3. Attach dash
     1 compose_dash
 ```

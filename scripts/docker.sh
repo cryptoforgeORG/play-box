@@ -71,6 +71,12 @@ function_menu_backup () {
                 cmd="mv .lnd/v3_onion_private_key ./v3_onion_private_key"
                 echo $cmd
                 $cmd
+                cmd="mv .lnd/tls.cert ./tls.cert"
+                echo $cmd
+                $cmd
+                cmd="mv .lnd/tls.key ./tls.key"
+                echo $cmd
+                $cmd
                 cmd="rm -rf .lnd"
                 echo $cmd
                 $cmd
@@ -81,6 +87,12 @@ function_menu_backup () {
                 echo $cmd
                 $cmd
                 cmd="mv .cookie .lnd/.cookie"
+                echo $cmd
+                $cmd
+                cmd="mv tls.key .lnd/tls.key"
+                echo $cmd
+                $cmd
+                cmd="mv tls.cert .lnd/tls.cert"
                 echo $cmd
                 $cmd
                 cmd="mv v3_onion_private_key .lnd/v3_onion_private_key"
