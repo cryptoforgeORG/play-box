@@ -26,10 +26,11 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./docker/traefik.yaml:/etc/traefik/traefik.yaml
       - ./docker/letsencrypt:/letsencrypt
-    environment:
-      - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-      - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-      - AWS_REGION=$AWS_REGION
+
+    # environment:
+    #   - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+    #   - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+    #   - AWS_REGION=$AWS_REGION
 
     logging:
       options:
