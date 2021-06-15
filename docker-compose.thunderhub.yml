@@ -59,11 +59,11 @@ services:
 
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.memes.rule=Host(`game-1.playentertainment.online`)"
-      - "traefik.http.services.memes.loadbalancer.server.port=3001"
-      - "traefik.http.routers.memes.tls=true"
-      - "traefik.http.routers.memes.tls.certresolver=myresolver"
-      - "traefik.http.routers.memes.entrypoints=thunderhub"
+      - "traefik.http.routers.thunderhub.rule=Host(`game-1.playentertainment.online`)"
+      - "traefik.http.services.thunderhub.loadbalancer.server.port=3001"
+      - "traefik.http.routers.thunderhub.tls=true"
+      - "traefik.http.routers.thunderhub.tls.certresolver=myresolver"
+      - "traefik.http.routers.thunderhub.entrypoints=thunderhub"
 
     depends_on:
       - reverse-proxy
