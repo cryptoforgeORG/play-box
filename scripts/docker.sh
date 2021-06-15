@@ -3,7 +3,7 @@
 
 function_menu_bash () {
   PS3='Please enter your choice: '
-    options=("bash_game" "bash_thunderhub" "bash_relay" "quit")
+    options=("bash_game" "bash_relay" "bash_thunderhub" "quit")
     select opt in "${options[@]}"
     do
         case $opt in
@@ -12,16 +12,19 @@ function_menu_bash () {
                 echo $cmd
                 $cmd          
                 ;;
-            "bash_thunderhub")
-                cmd="docker exec -it thunderhub sh"
-                echo $cmd
-                $cmd          
-                ;;
+
             "bash_relay")
                 cmd="docker exec -it relay bash"
                 echo $cmd
                 $cmd          
                 ;;
+
+            "bash_thunderhub")
+                cmd="docker exec -it thunderhub sh"
+                echo $cmd
+                $cmd          
+                ;;
+
             "quit")
                 break
                 ;;
