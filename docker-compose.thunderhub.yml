@@ -59,7 +59,7 @@ services:
 
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.thunderhub.rule=Host(`game-1.playentertainment.online`)"
+      # - "traefik.http.routers.thunderhub.rule=Host(`game-1.playentertainment.online`)"
       - "traefik.http.services.thunderhub.loadbalancer.server.port=3001"
       - "traefik.http.routers.thunderhub.tls=true"
       - "traefik.http.routers.thunderhub.tls.certresolver=myresolver"
