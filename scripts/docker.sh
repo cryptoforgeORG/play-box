@@ -121,7 +121,7 @@ function_menu_backup () {
 }
 
 PS3='Please enter your choice: '
-options=("bash" "kill" "purge" "compose_relay" "backup" "compose_dash" "logs_thunderhub" "quit")
+options=("bash" "kill" "purge" "compose_relay" "backup" "compose_dash" "logs_thunderhub" "git_pull" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -159,6 +159,12 @@ do
 
         "logs_thunderhub")
             cmd="docker logs --follow thunderhub"
+            echo $cmd
+            $cmd            
+            ;;
+
+        "git_pull")
+            cmd="git pull"
             echo $cmd
             $cmd            
             ;;
