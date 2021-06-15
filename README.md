@@ -19,13 +19,14 @@ http://game-1.playentertainment.online:3000/connect
 
 ```
 1. Build cluster
+    1. start_cluster
     2. Wait for tor (getinfo check)
 2. Restore
     1. kill relay
     2. push_backup
     3. apply_backup
 3. Attach dash
-    1 compose_dash
+    1. compose_dash
 ```
 
 We accept donations! :)

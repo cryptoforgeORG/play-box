@@ -1,0 +1,24 @@
+api:
+  insecure: true
+
+providers:
+  docker: {}
+
+entryPoints:
+  web:
+    address: ":80"
+
+  websecure:
+    address: ":443"
+
+  thunderhub:
+    address: ":3001"
+
+certificatesResolvers:
+  myresolver:
+    acme:
+      email: cryptoforge.ninja@gmail.com
+      storage: /letsencrypt/acme.json
+      caServer: https://acme-v02.api.letsencrypt.org/directory
+      dnsChallenge:
+        provider: route53
