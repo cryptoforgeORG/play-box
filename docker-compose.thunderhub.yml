@@ -4,6 +4,7 @@ volumes:
 
 services:
   reverse-proxy:
+    container_name: proxy
     # The official v2 Traefik docker image
     image: traefik:v2.2.1
     # Enables the web UI and tells Traefik to listen to docker
