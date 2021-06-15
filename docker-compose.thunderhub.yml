@@ -18,7 +18,7 @@ services:
       # entrypoints
       - 443:443
       - 5000:5000
-      - 3001:3001
+      # - 3001:3001
       # - 3000:3000
     volumes:
       # So that Traefik can listen to the Docker events

@@ -7,12 +7,12 @@ select opt in "${options[@]}"
 do
     case $opt in
         "start_cluster")            
-            cmd="ansible-playbook -i inventory/hosts playbooks/start-cluster.yml"
+            cmd="ansible-playbook -i ops/ansible/inventory/hosts ops/ansible/playbooks/start-cluster.yml"
             echo $cmd
             $cmd
             ;;
         "terminate_cluster")
-            cmd="ansible-playbook -i inventory/hosts playbooks/terminate-cluster.yml"
+            cmd="ansible-playbook -i ops/ansible/inventory/hosts ops/ansible/playbooks/terminate-cluster.yml"
             echo $cmd
             $cmd
             ;;
