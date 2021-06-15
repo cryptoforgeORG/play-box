@@ -212,6 +212,10 @@
     mode=0644
   become: yes
 
+- name: Create thunderhub .cookie
+  shell: "touch /game/.lnd/.cookie"
+  become: yes
+
 - name: Start container
   shell: "cd /game && docker-compose up -d"
   become: yes
