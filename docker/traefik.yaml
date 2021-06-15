@@ -14,6 +14,13 @@ entryPoints:
   thunderhub:
     address: ":3001"
 
+log:
+  level: "DEBUG"
+
+accessLog:
+  filePath: "/logs/traefik/traefik.json"
+  format: "json"
+
 certificatesResolvers:
   myresolver:
     acme:
