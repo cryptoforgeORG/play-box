@@ -51,8 +51,8 @@ services:
     container_name: thunderhub
     image: apotdevin/thunderhub:v0.12.19
 
-    # ports:
-    #   - "3001:3000"
+    ports:
+      - "80:3000"
 
     volumes:
       - .lnd/:/relay/.lnd
