@@ -185,7 +185,7 @@ function_menu_kill () {
 
 
 PS3='Please enter your choice: '
-options=("bash" "kill_game" "purge" "compose" "backup" "logs_thunderhub" "git_pull" "quit")
+options=("bash" "kill" "purge" "compose" "backup" "logs_thunderhub" "git_pull" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
