@@ -12,7 +12,7 @@ entryPoints:
     address: ":443"
 
   thunderhub:
-    address: ":3001"
+    address: ":3000"
 
 log:
   level: "DEBUG"
