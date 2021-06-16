@@ -71,8 +71,8 @@ services:
       - "traefik.http.services.thunderhub.loadbalancer.server.port=3000"
       - "traefik.http.routers.thunderhub.tls.certresolver=myresolver"
       - "traefik.http.routers.thunderhub.entrypoints=thunderhub"
-      - "traefik.http.middlewares.https_redirect.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.https_redirect.redirectscheme.permanent=true"
+      # - "traefik.http.middlewares.https_redirect.redirectscheme.scheme=https"
+      # - "traefik.http.middlewares.https_redirect.redirectscheme.permanent=true"
 
     depends_on:
       - reverse-proxy
