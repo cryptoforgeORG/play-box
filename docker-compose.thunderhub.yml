@@ -92,6 +92,6 @@ services:
     depends_on:
       - reverse-proxy
 
-  networks:
-    web:
-      external: true
+networks:
+  web:
+    external: true
