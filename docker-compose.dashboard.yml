@@ -1,0 +1,29 @@
+version: "2"
+volumes:
+  node_modules:
+
+services:
+  dashboard:
+    container_name: dashboard
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+
+    ports:
+      - "80:80"
+      - "3000:3000"
+
+    volumes:
+      - .lnd/:/relay/.lnd
+
+    command: "npm run start:secure"
+
+    environment:
+      - COOKIE_PATH=/relay/.lnd/.cookie
+      - SSO_SERVER_URL=127.0.0.1:10009
+      - SSO_CERT_PATH=/relay/.lnd/tls.cert
+      - SSO_MACAROON_PATH=/relay/.lnd/data/chain/bitcoin/mainnet
+      - ACCOUNT_CONFIG_PATH=/relay/.lnd/thubConfig.yaml
+      - ZEROSSL_API_KEY=ce32f78e759853c4408226c15ab76aa4
+      - PUBLIC_URL=game-1.playentertainment.online
+      - SSL_PORT=80
