@@ -120,8 +120,72 @@ function_menu_backup () {
     done
 }
 
+function_menu_compose () {
+  PS3='Please enter your choice: '
+    options=("compose_game" "compose_dash" "quit")
+    select opt in "${options[@]}"
+    do
+        case $opt in
+            "compose_game")
+                cmd="docker-compose -f docker-compose.yml up -d"
+                echo $cmd
+                $cmd          
+                ;;
+
+            "compose_dash")
+                cmd="docker-compose -f docker-compose.thunderhub.yml up -d"
+                echo $cmd
+                $cmd          
+                ;;
+
+            "quit")
+                break
+                ;;
+            *) 
+                PS3="" # this hides the prompt
+                echo asdf | select foo in "${options[@]}"; do break; done # dummy select 
+                PS3="Please enter your choice: " # this displays the common prompt
+                ;;
+        esac
+    done
+}
+
+function_menu_kill () {
+  PS3='Please enter your choice: '
+    options=("game" "dash" "quit")
+    select opt in "${options[@]}"
+    do
+        case $opt in
+            "game")
+                cmd="docker kill $(docker ps -q)"
+                echo $cmd
+                $cmd          
+                ;;
+
+            "dash")
+                cmd="docker kill proxy"
+                echo $cmd
+                $cmd   
+                cmd="docker kill thunderhub"
+                echo $cmd
+                $cmd            
+                ;;
+
+            "quit")
+                break
+                ;;
+            *) 
+                PS3="" # this hides the prompt
+                echo asdf | select foo in "${options[@]}"; do break; done # dummy select 
+                PS3="Please enter your choice: " # this displays the common prompt
+                ;;
+        esac
+    done
+}
+
+
 PS3='Please enter your choice: '
-options=("bash" "kill" "purge" "compose_relay" "backup" "compose_dash" "logs_thunderhub" "git_pull" "quit")
+options=("bash" "kill_game" "purge" "compose" "backup" "logs_thunderhub" "git_pull" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -130,9 +194,7 @@ do
             ;;
 
         "kill")
-            cmd="docker kill $(docker ps -q)"
-            echo $cmd
-            $cmd            
+            function_menu_kill           
             ;;
 
         "purge")
@@ -141,20 +203,12 @@ do
             $cmd
             ;;
 
-        "compose_relay")
-            cmd="docker-compose -f docker-compose.yml up -d"
-            echo $cmd
-            $cmd            
+        "compose")
+            function_menu_compose
             ;;
 
         "backup")            
             function_menu_backup
-            ;;
-
-        "compose_dash")
-            cmd="docker-compose -f docker-compose.thunderhub.yml up -d"
-            echo $cmd
-            $cmd            
             ;;
 
         "logs_thunderhub")
