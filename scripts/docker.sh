@@ -122,7 +122,7 @@ function_menu_backup () {
 
 function_menu_compose () {
   PS3='Please enter your choice: '
-    options=("compose_game" "compose_dash" "quit")
+    options=("compose_game" "compose_dash" "kill_game" "kill_dash" "quit")
     select opt in "${options[@]}"
     do
         case $opt in
@@ -136,6 +136,21 @@ function_menu_compose () {
                 cmd="docker-compose -f docker-compose.thunderhub.yml up -d"
                 echo $cmd
                 $cmd          
+                ;;
+
+            "kill_game")
+                cmd="docker kill game"
+                echo $cmd
+                $cmd          
+                ;;
+
+            "kill_dash")
+                cmd="docker kill proxy"
+                echo $cmd
+                $cmd   
+                cmd="docker kill thunderhub"
+                echo $cmd
+                $cmd            
                 ;;
 
             "quit")
@@ -185,16 +200,12 @@ function_menu_kill () {
 
 
 PS3='Please enter your choice: '
-options=("bash" "kill" "purge" "compose" "backup" "logs_thunderhub" "git_pull" "quit")
+options=("bash" "purge" "compose" "backup" "logs_thunderhub" "git_pull" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
         "bash")            
             function_menu_bash 
-            ;;
-
-        "kill")
-            function_menu_kill           
             ;;
 
         "purge")
