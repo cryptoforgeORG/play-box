@@ -18,7 +18,7 @@ services:
       - "--accessLog.format=json"
     ports:
       # The HTTP port
-      - 80:80
+      # - 80:80
       # The Web UI (enabled by --api.insecure=true)
       - 8080:8080
       # entrypoints
