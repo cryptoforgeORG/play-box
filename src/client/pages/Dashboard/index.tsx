@@ -57,7 +57,8 @@ const Interface: React.FunctionComponent = () => {
 
   const thunderUrl = () => {
     let words = window.location.href.split(":");
-    return `${words[0]}:${words[1]}:3000`;
+    // return `${words[0]}:${words[1]}`;
+    return `https://${words[1]}`;
   };
 
   return (
