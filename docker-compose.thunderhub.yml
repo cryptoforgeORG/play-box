@@ -57,6 +57,8 @@ services:
     volumes:
       - .lnd/:/relay/.lnd
 
+    command: "npm run start:secure"
+
     environment:
       - COOKIE_PATH=/relay/.lnd/.cookie
       - SSO_SERVER_URL=127.0.0.1:10009
