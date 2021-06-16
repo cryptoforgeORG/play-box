@@ -122,7 +122,7 @@ function_menu_backup () {
 
 function_menu_compose () {
   PS3='Please enter your choice: '
-    options=("compose_game" "compose_dash" "kill_game" "kill_dash" "quit")
+    options=("compose_game" "compose_dash" "kill_relay" "kill_game" "kill_dash" "quit")
     select opt in "${options[@]}"
     do
         case $opt in
@@ -134,6 +134,12 @@ function_menu_compose () {
 
             "compose_dash")
                 cmd="docker-compose -f docker-compose.thunderhub.yml up -d"
+                echo $cmd
+                $cmd          
+                ;;
+
+            "kill_relay")
+                cmd="docker kill relay"
                 echo $cmd
                 $cmd          
                 ;;

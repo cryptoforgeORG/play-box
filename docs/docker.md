@@ -10,7 +10,7 @@ docker push cryptoforge/cryptoforge-relay:latest
 docker-compose up
 ```
 
-```
+``` N2N2
 docker build -t n2n2-relay -f Dockerfile.mainnet .
 
 docker login -u cryptoforge
@@ -20,7 +20,7 @@ docker push cryptoforge/n2n2-relay:latest
 docker-compose up
 ```
 
-```
+``` SPHINX
 docker build -t sphinx-relay -f Dockerfile.mainnet .
 
 docker login -u cryptoforge
