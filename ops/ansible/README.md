@@ -29,4 +29,5 @@ docker ps -q | xargs -L 1 docker logs -f
 ### Bash
 ```
 ssh -i ~/.ssh/playent.pem ubuntu@game-1.playentertainment.online
+ssh -i ~/.ssh/playent.pem ubuntu@game-2.playentertainment.online
 ```

@@ -2,24 +2,30 @@
 # Bash Menu Script Example
 
 PS3='Please enter your choice: '
-options=("ssh_game_1" "push_backup" "pull_backup" "quit")
+options=("push_backup_1" "push_backup_2" "pull_backup_1" "pull_backup_2" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
-        "ssh_game_1")
-            cmd="ssh -i ~/.ssh/playent.pem ubuntu@game-1.playentertainment.online"
+        "push_backup_1")
+            cmd="scp -i ~/.ssh/playent.pem -r ./backups/import.tar.gz ubuntu@game-1.playentertainment.online:/game/import.tar.gz"
             echo $cmd
             $cmd            
             ;;
 
-        "push_backup")
-            cmd="scp -i ~/.ssh/playent.pem -r ./backups/backup_n2n2-relay-0.tar.gz ubuntu@game-1.playentertainment.online:/game/import.tar.gz"
+        "push_backup_2")
+            cmd="scp -i ~/.ssh/playent.pem -r ./backups/import.tar.gz ubuntu@game-2.playentertainment.online:/game/import.tar.gz"
             echo $cmd
             $cmd            
             ;;
 
-        "pull_backup")
+        "pull_backup_1")
             cmd="scp -i ~/.ssh/playent.pem -r ubuntu@game-1.playentertainment.online:/game/export.tar.gz ."
+            echo $cmd
+            $cmd            
+            ;;
+
+        "pull_backup_2")
+            cmd="scp -i ~/.ssh/playent.pem -r ubuntu@game-2.playentertainment.online:/game/export.tar.gz ."
             echo $cmd
             $cmd            
             ;;

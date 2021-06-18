@@ -25,5 +25,5 @@ services:
       - SSO_MACAROON_PATH=/relay/.lnd/data/chain/bitcoin/mainnet
       - ACCOUNT_CONFIG_PATH=/relay/.lnd/thubConfig.yaml
       - ZEROSSL_API_KEY=ce32f78e759853c4408226c15ab76aa4
-      - PUBLIC_URL=game-1.playentertainment.online
+      - PUBLIC_URL=$NODE_DOMAIN
       - SSL_PORT=80

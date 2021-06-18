@@ -58,14 +58,14 @@ services:
       - SSO_CERT_PATH=/relay/.lnd/tls.cert
       - SSO_MACAROON_PATH=/relay/.lnd/data/chain/bitcoin/mainnet
       - ACCOUNT_CONFIG_PATH=/relay/.lnd/thubConfig.yaml
-      - PUBLIC_URL=game-1.playentertainment.online
+      - PUBLIC_URL=$NODE_DOMAIN
       - SSL_PORT=80
 
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.thunderhub.tls=true"
 
-      - "traefik.http.routers.thunderhub.rule=Host(`game-1.playentertainment.online`)"
+      - "traefik.http.routers.thunderhub.rule=Host(`$NODE_DOMAIN`)"
       - "traefik.http.services.thunderhub.loadbalancer.server.port=3000"
       - "traefik.http.routers.thunderhub.tls.certresolver=myresolver"
       - "traefik.http.routers.thunderhub.entrypoints=websecure"
