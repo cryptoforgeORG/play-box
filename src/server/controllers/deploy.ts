@@ -276,12 +276,14 @@ export const deploy = {
     console.log("stop");
 
     if (child) {
-      child.stdin.pause();
-      child.kill();
+      process.kill(-child.pid, 'SIGINT');
+
+      // spawn("sh", ["-c", "kill -INT -" + child.pid]);
       callback(`process stopped.`);
+      console.log("killed");
     } else {
       callback(`process not found.`);
-
+      console.log("not found");
     }
 
     // const script = path.dirname(__filename) + "/bash/" + "stop.sh";
