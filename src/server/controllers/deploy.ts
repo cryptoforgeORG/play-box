@@ -275,10 +275,14 @@ export const deploy = {
   stop: async (callback: any) => {
     console.log("stop");
 
-    child.stdin.pause();
-    child.kill();
+    if (child) {
+      child.stdin.pause();
+      child.kill();
+      callback(`process stopped.`);
+    } else {
+      callback(`process not found.`);
 
-    callback(`process stopped.`);
+    }
 
     // const script = path.dirname(__filename) + "/bash/" + "stop.sh";
 
