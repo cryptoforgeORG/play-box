@@ -275,28 +275,33 @@ export const deploy = {
   stop: async (callback: any) => {
     console.log("stop");
 
-    const script = path.dirname(__filename) + "/bash/" + "stop.sh";
+    child.stdin.pause();
+    child.kill();
 
-    var child = spawn("sh", [script]);
+    callback(`process stopped.`);
 
-    child.stdout.on("data", function (data: any) {
-      console.log("stdout: " + data);
+    // const script = path.dirname(__filename) + "/bash/" + "stop.sh";
 
-      callback("");
-      callback(`${data}`);
-    });
+    // var child = spawn("sh", [script]);
 
-    child.stderr.on("data", function (data: any) {
-      // console.log('stderr: ' + data);
-      callback(`${data}`);
-    });
+    // child.stdout.on("data", function (data: any) {
+    //   console.log("stdout: " + data);
 
-    child.on("close", function (code: string) {
-      console.log("child process exited with code " + code);
-      // callback(`${code}`);
-    });
+    //   callback("");
+    //   callback(`${data}`);
+    // });
 
-    return 0;
+    // child.stderr.on("data", function (data: any) {
+    //   // console.log('stderr: ' + data);
+    //   callback(`${data}`);
+    // });
+
+    // child.on("close", function (code: string) {
+    //   console.log("child process exited with code " + code);
+    //   // callback(`${code}`);
+    // });
+
+    // return 0;
   },
 };
 
