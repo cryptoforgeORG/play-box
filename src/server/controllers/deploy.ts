@@ -275,37 +275,37 @@ export const deploy = {
   stop: async (callback: any) => {
     console.log("stop");
 
-    if (child) {
-      process.kill(-child.pid, 'SIGINT');
+    // if (child) {
+    //   process.kill(-child.pid, 'SIGINT');
 
-      // spawn("sh", ["-c", "kill -INT -" + child.pid]);
-      callback(`process stopped.`);
-      console.log("killed");
-    } else {
-      callback(`process not found.`);
-      console.log("not found");
-    }
+    //   // spawn("sh", ["-c", "kill -INT -" + child.pid]);
+    //   callback(`process stopped.`);
+    //   console.log("killed");
+    // } else {
+    //   callback(`process not found.`);
+    //   console.log("not found");
+    // }
 
-    // const script = path.dirname(__filename) + "/bash/" + "stop.sh";
+    const script = path.dirname(__filename) + "/bash/" + "stop.sh";
 
-    // var child = spawn("sh", [script]);
+    var child = spawn("sh", [script]);
 
-    // child.stdout.on("data", function (data: any) {
-    //   console.log("stdout: " + data);
+    child.stdout.on("data", function (data: any) {
+      console.log("stdout: " + data);
 
-    //   callback("");
-    //   callback(`${data}`);
-    // });
+      callback("");
+      callback(`${data}`);
+    });
 
-    // child.stderr.on("data", function (data: any) {
-    //   // console.log('stderr: ' + data);
-    //   callback(`${data}`);
-    // });
+    child.stderr.on("data", function (data: any) {
+      // console.log('stderr: ' + data);
+      callback(`${data}`);
+    });
 
-    // child.on("close", function (code: string) {
-    //   console.log("child process exited with code " + code);
-    //   // callback(`${code}`);
-    // });
+    child.on("close", function (code: string) {
+      console.log("child process exited with code " + code);
+      callback(`${code}`);
+    });
 
     return 0;
   },

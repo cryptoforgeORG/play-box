@@ -6,7 +6,8 @@ echo "deploy script started"
 # ps -p $PID -o %cpu,%mem,cmd
 
 echo "stop old instance"
-(! pidof masters-of-conquest-headless) || sudo kill -9 $(pidof masters-of-conquest-headless)
+# (! pidof masters-of-conquest-headless) || sudo kill -9 $(pidof masters-of-conquest-headless)
+killall masters-of-conquest-headless.x86_64
 # kill -9 $(pidof masters-of-conquest-headless)
 # kill -9 $PID
 
