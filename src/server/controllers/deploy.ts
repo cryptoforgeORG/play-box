@@ -305,7 +305,7 @@ export const deploy = {
     //   // callback(`${code}`);
     // });
 
-    // return 0;
+    return 0;
   },
 };
 
