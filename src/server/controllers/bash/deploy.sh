@@ -31,6 +31,9 @@ unzip masters-of-conquest-headless.zip -d masters-of-conquest-headless
 mkdir masters-of-conquest-headless/masters-of-conquest-headless_Data/StreamingAssets
 cp code.txt masters-of-conquest-headless/masters-of-conquest-headless_Data/StreamingAssets
 
+mkdir masters-of-conquest-headless/masters-of-conquest-headless_Data/StreamingAssets
+cp pin.txt masters-of-conquest-headless/masters-of-conquest-headless_Data/StreamingAssets
+
 # echo "set up logging"
 # touch log.txt
 
