@@ -24,6 +24,15 @@ app.use(compression());
 app.use('/api', apiRouter);
 app.use('/forms', formsRouter);
 
+
+app.use('/files/masters-of-conquest-headless_Data/StreamingAssets/code.txt', (req: any, res: any, next: any) => {
+    return res.status(403).end('403 Forbidden')
+})
+
+app.use('/files/masters-of-conquest-headless_Data/StreamingAssets/pin.txt', (req: any, res: any, next: any) => {
+    return res.status(403).end('403 Forbidden')
+})
+
 app.use(
     "/files",
     express.static("masters-of-conquest-headless"),
