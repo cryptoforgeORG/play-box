@@ -34,6 +34,9 @@ cp code.txt masters-of-conquest-headless/masters-of-conquest-headless_Data/Strea
 mkdir masters-of-conquest-headless/masters-of-conquest-headless_Data/StreamingAssets
 cp pin.txt masters-of-conquest-headless/masters-of-conquest-headless_Data/StreamingAssets
 
+mkdir masters-of-conquest-headless/masters-of-conquest-headless_Data/StreamingAssets
+cp config.json masters-of-conquest-headless/masters-of-conquest-headless_Data/StreamingAssets
+
 # echo "set up logging"
 # touch log.txt
 
