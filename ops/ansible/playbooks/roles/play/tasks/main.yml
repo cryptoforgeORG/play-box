@@ -65,6 +65,15 @@
     line: "PHOTON_APP_ID={{ hostvars[inventory_hostname].photon_app_id }}"
   become: yes
 
+- name: Set MEDIA_HOST_PROTOCOL
+  lineinfile:
+    dest: /etc/environment
+    create: yes
+    state: present
+    regexp: "^MEDIA_HOST_PROTOCOL"
+    line: "MEDIA_HOST_PROTOCOL={{ media_host_protocol }}"
+  become: yes
+
 - name: Set MEDIA_HOST
   lineinfile:
     dest: /etc/environment

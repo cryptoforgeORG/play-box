@@ -133,7 +133,7 @@ const Dashboard = (props: Props) => {
         <div>
           <h2>
             Dashboard |&nbsp;
-            <a href={`https://core.playentertainment.online`}>Core</a>
+            <a href={`https://cryptoforge.org/live`}>Live</a>
           </h2>
           <br />
           <div>
