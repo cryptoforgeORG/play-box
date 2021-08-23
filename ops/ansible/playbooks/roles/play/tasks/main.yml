@@ -211,15 +211,19 @@
   shell: "touch /game/.lnd/.cookie"
   become: yes
 
-- name: Start container
+- name: Start container relay
   shell: "cd /game && docker-compose up -d"
   become: yes
   when: not hostvars[inventory_hostname].testnet
 
-- name: Start container [testnet]
+- name: Start container relay [testnet]
   shell: "cd /game && docker-compose -f docker-compose-testnet.yml up -d"
   become: yes
   when: hostvars[inventory_hostname].testnet
+
+- name: Start container game
+  shell: "cd /game && docker-compose -f docker-compose.game.yml up -d"
+  become: yes
 
 - name: Timeout
   pause:

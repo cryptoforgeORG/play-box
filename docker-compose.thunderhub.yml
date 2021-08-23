@@ -54,9 +54,9 @@ services:
 
     environment:
       - COOKIE_PATH=/relay/.lnd/.cookie
-      - SSO_SERVER_URL=127.0.0.1:10009
-      - SSO_CERT_PATH=/relay/.lnd/tls.cert
-      - SSO_MACAROON_PATH=/relay/.lnd/data/chain/bitcoin/mainnet
+      # - SSO_SERVER_URL=127.0.0.1:10009
+      # - SSO_CERT_PATH=/relay/.lnd/tls.cert
+      # - SSO_MACAROON_PATH=/relay/.lnd/data/chain/bitcoin/mainnet
       - ACCOUNT_CONFIG_PATH=/relay/.lnd/thubConfig.yaml
       - PUBLIC_URL=$NODE_DOMAIN
       - SSL_PORT=80

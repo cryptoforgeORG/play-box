@@ -36,19 +36,19 @@ services:
     env_file:
       - /etc/environment
 
-  game:
-    container_name: game
-    build:
-      context: .
-      dockerfile: Dockerfile.game
+  # game:
+  #   container_name: game
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.game
 
-    mem_limit: 2048M
-    mem_reservation: 2048M
+  #   mem_limit: 2048M
+  #   mem_reservation: 2048M
 
-    ports:
-      - "8443:8443"
+  #   ports:
+  #     - "8443:8443"
 
-    command: "npm start"
+  #   command: "npm start"
 
-    env_file:
-      - /etc/environment
+  #   env_file:
+  #     - /etc/environment
