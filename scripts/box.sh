@@ -260,7 +260,7 @@ function_menu_kill () {
 
 
 PS3='Please enter your choice: '
-options=("bash" "purge" "docker" "backup" "log" "git_pull" "quit")
+options=("bash" "docker" "backup" "log" "git_pull" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
