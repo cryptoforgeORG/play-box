@@ -158,7 +158,7 @@ function_menu_backup () {
 
 function_menu_docker () {
   PS3='Please enter your choice: '
-    options=("compose_relay" "compose_game" "compose_thunderhub" "kill_relay" "kill_game" "kill_thunderhub" "prune" "quit")
+    options=("compose_relay" "compose_game" "compose_thunderhub" "kill_relay" "kill_game" "kill_thunderhub" "ps" "prune" "quit")
     select opt in "${options[@]}"
     do
         case $opt in
@@ -199,6 +199,12 @@ function_menu_docker () {
                 cmd="docker kill thunderhub"
                 echo $cmd
                 $cmd            
+                ;;
+
+            "ps")
+                cmd="docker ps"
+                echo $cmd
+                $cmd             
                 ;;
 
             "prune")
