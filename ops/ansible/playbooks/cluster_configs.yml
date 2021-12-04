@@ -1,14 +1,17 @@
 ---
 cluster_configs:
-  # - {
-  #     instance_type: "c4.large",
-  #     instance_name: "game-1",
-  #     testnet: false,
-  #     photon_app_id: "fa5e21e8-531b-49fe-93ac-4915068825ea",
-  #   }
   - {
       instance_type: "c4.large",
-      instance_name: "game-2",
+      instance_name: "box-1",
+      alias: "cryptoforge-box-1",
       testnet: false,
-      photon_app_id: "61f38c23-17fd-4868-990e-0517777cb873",
+      domain: "cryptoforge.org",
+      scheme: "https",
+      photon_app_id: "fa5e21e8-531b-49fe-93ac-4915068825ea",
     }
+# - {
+#     instance_type: "c4.large",
+#     instance_name: "game-1",
+#     testnet: false,
+#     photon_app_id: "fa5e21e8-531b-49fe-93ac-4915068825ea",
+#   }

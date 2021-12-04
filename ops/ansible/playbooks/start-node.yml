@@ -91,7 +91,7 @@
 
 - name: Add a host alias that we reach through a tunnel (Ansible >= 2.0)
   add_host:
-    name: "{{ config.instance_name }}.playentertainment.online"
+    name: "{{ config.instance_name }}.{{ config.domain }}"
     hostname: "play"
     groups: relays
     ansible_host: "{{ eip.public_ip }}"
@@ -102,13 +102,16 @@
     ec2: "{{ ec2 }}"
     public_ip: "{{ eip.public_ip }}"
     testnet: "{{ config.testnet }}"
+    domain: "{{ config.domain }}"
+    scheme: "{{ config.scheme }}"
+    alias: "{{ config.alias }}"
     photon_app_id: "{{ config.photon_app_id }}"
 
 - name: Add to Route 53
   community.aws.route53:
     state: present
-    zone: playentertainment.online
-    record: "{{ config.instance_name }}.playentertainment.online"
+    zone: "{{ config.domain }}"
+    record: "{{ config.instance_name }}.{{ config.domain }}"
     type: A
     ttl: 300
     value: "{{ instance_eip.public_ip }}"

@@ -1,4 +1,4 @@
 ---
-game_path: "/game"
+src_path: "/box"
 git_repo: "git@github.com:pay2play/play-platform-game.git"
 git_branch: "main"

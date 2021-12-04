@@ -7,25 +7,25 @@ select opt in "${options[@]}"
 do
     case $opt in
         "push_backup_1")
-            cmd="scp -i ~/.ssh/playent.pem -r ./backups/import.tar.gz ubuntu@game-1.playentertainment.online:/game/import.tar.gz"
+            cmd="scp -i ~/.ssh/playent.pem -r ./backups/import.tar.gz ubuntu@game-1.playentertainment.online:/box/import.tar.gz"
             echo $cmd
             $cmd            
             ;;
 
         "push_backup_2")
-            cmd="scp -i ~/.ssh/playent.pem -r ./backups/import.tar.gz ubuntu@game-2.playentertainment.online:/game/import.tar.gz"
+            cmd="scp -i ~/.ssh/playent.pem -r ./backups/import.tar.gz ubuntu@game-2.playentertainment.online:/box/import.tar.gz"
             echo $cmd
             $cmd            
             ;;
 
         "pull_backup_1")
-            cmd="scp -i ~/.ssh/playent.pem -r ubuntu@game-1.playentertainment.online:/game/export.tar.gz ."
+            cmd="scp -i ~/.ssh/playent.pem -r ubuntu@game-1.playentertainment.online:/box/export.tar.gz ."
             echo $cmd
             $cmd            
             ;;
 
         "pull_backup_2")
-            cmd="scp -i ~/.ssh/playent.pem -r ubuntu@game-2.playentertainment.online:/game/export.tar.gz ."
+            cmd="scp -i ~/.ssh/playent.pem -r ubuntu@game-2.playentertainment.online:/box/export.tar.gz ."
             echo $cmd
             $cmd            
             ;;

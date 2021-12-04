@@ -1,6 +1,42 @@
 #!/bin/bash
 # Bash Menu Script Example
 
+function_menu_logs () {
+  PS3='Please enter your choice: '
+    options=("logs_relay" "logs_proxy" "logs_thunderhub" "quit")
+    select opt in "${options[@]}"
+    do
+        case $opt in
+            "logs_relay")
+                cmd="docker logs --follow relay"
+                echo $cmd
+                $cmd            
+                ;;
+
+            "logs_proxy")
+                cmd="docker logs --follow proxy"
+                echo $cmd
+                $cmd            
+                ;;
+
+            "logs_thunderhub")
+                cmd="docker logs --follow thunderhub"
+                echo $cmd
+                $cmd            
+                ;;
+
+            "quit")
+                break
+                ;;
+            *) 
+                PS3="" # this hides the prompt
+                echo asdf | select foo in "${options[@]}"; do break; done # dummy select 
+                PS3="Please enter your choice: " # this displays the common prompt
+                ;;
+        esac
+    done
+}
+
 function_menu_bash () {
   PS3='Please enter your choice: '
     options=("bash_game" "bash_relay" "bash_thunderhub" "bash_proxy" "quit")
@@ -53,7 +89,7 @@ function_menu_backup () {
                 cmd="export CTR_ID=$(docker ps -q -f name=relay)"
                 echo $cmd
                 $cmd  
-                cmd="docker cp $CTR_ID:/relay/export.tar.gz /game/export.tar.gz"
+                cmd="docker cp $CTR_ID:/relay/export.tar.gz /box/export.tar.gz"
                 echo $cmd
                 $cmd            
                 ;;
@@ -62,7 +98,7 @@ function_menu_backup () {
                 cmd="export CTR_ID=$(docker ps -q -f name=relay)"
                 echo $cmd
                 $cmd   
-                cmd="docker cp /game/import.tar.gz $CTR_ID:/relay/import.tar.gz"
+                cmd="docker cp /box/import.tar.gz $CTR_ID:/relay/import.tar.gz"
                 echo $cmd
                 $cmd            
                 ;;
@@ -120,9 +156,9 @@ function_menu_backup () {
     done
 }
 
-function_menu_compose () {
+function_menu_docker () {
   PS3='Please enter your choice: '
-    options=("compose_relay" "compose_game" "compose_thunderhub" "kill_relay" "kill_game" "kill_thunderhub" "quit")
+    options=("compose_relay" "compose_game" "compose_thunderhub" "kill_relay" "kill_game" "kill_thunderhub" "prune" "quit")
     select opt in "${options[@]}"
     do
         case $opt in
@@ -163,6 +199,12 @@ function_menu_compose () {
                 cmd="docker kill thunderhub"
                 echo $cmd
                 $cmd            
+                ;;
+
+            "prune")
+                cmd="docker system prune -a"
+                echo $cmd
+                $cmd
                 ;;
 
             "quit")
@@ -212,7 +254,7 @@ function_menu_kill () {
 
 
 PS3='Please enter your choice: '
-options=("bash" "purge" "docker" "backup" "logs_thunderhub" "git_pull" "quit")
+options=("bash" "purge" "docker" "backup" "log" "git_pull" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -220,24 +262,16 @@ do
             function_menu_bash 
             ;;
 
-        "purge")
-            cmd="docker system prune -a"
-            echo $cmd
-            $cmd
-            ;;
-
         "docker")
-            function_menu_compose
+            function_menu_docker
             ;;
 
         "backup")            
             function_menu_backup
             ;;
 
-        "logs_thunderhub")
-            cmd="docker logs --follow thunderhub"
-            echo $cmd
-            $cmd            
+        "logs")
+            function_menu_logs          
             ;;
 
         "git_pull")
