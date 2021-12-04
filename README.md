@@ -1,4 +1,4 @@
-# play-platform-game
+# play-box
 
 ## Deployment
 To start see [Deploy](ops/ansible/README.md)
