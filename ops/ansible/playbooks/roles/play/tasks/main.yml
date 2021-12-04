@@ -275,6 +275,11 @@
 #   shell: "touch {{ src_path }}/.lnd/.cookie"
 #   become: yes
 
+- name: Start container [proxy]
+  shell: "cd {{ src_path }} && docker-compose -f docker-compose.proxy.yml up -d"
+  become: yes
+  when: not hostvars[inventory_hostname].testnet
+
 - name: Start container relay
   shell: "cd {{ src_path }} && docker-compose up -d"
   become: yes
@@ -285,9 +290,9 @@
   become: yes
   when: hostvars[inventory_hostname].testnet
 
-- name: Start container game
-  shell: "cd {{ src_path }} && docker-compose -f docker-compose.game.yml up -d"
-  become: yes
+# - name: Start container game
+#   shell: "cd {{ src_path }} && docker-compose -f docker-compose.game.yml up -d"
+#   become: yes
 
 - name: Timeout
   pause:

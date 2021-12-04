@@ -1,18 +1,16 @@
 # play-box
 
-## Deployment
-To start see [Deploy](ops/ansible/README.md)
 
-## Docker
-To start see [Docker](docs/docker.md)
+``` Game Dashboard (Master Client)
+http://box-1.cryptoforge.org:8443/
 
-
-``` Game
 http://game-1.playentertainment.online:8443/
 http://game-2.playentertainment.online:8443/
 ```
 
 ``` Relay
+https://box-1.cryptoforge.org/connect
+
 http://game-1.playentertainment.online:3000/connect
 http://game-2.playentertainment.online:3000/connect
 ```
@@ -30,6 +28,13 @@ http://game-2.playentertainment.online:3000/connect
 3. Attach dash
     1. compose_dash
 ```
+
+
+## Deployment
+To start see [Deploy](ops/ansible/README.md)
+
+## Docker
+To start see [Docker](docs/docker.md)
 
 We accept donations! :)
 [DONATE](https://bitclout.com/u/pay2play)
