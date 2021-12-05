@@ -81,10 +81,24 @@ function_menu_logs () {
 
 function_menu_backup () {
   PS3='Please enter your choice: '
-    options=("pull_backup" "push_backup" "apply_backup" "quit")
+    options=("untar_import" "pull_backup" "push_backup" "apply_backup" "quit")
     select opt in "${options[@]}"
     do
         case $opt in
+            "untar_import")
+                cmd="mkdir -p /box/.lnd"
+                echo $cmd
+                $cmd 
+
+                cmd="tar -xzvf import.tar.gz -C /box/.lnd"
+                echo $cmd
+                $cmd 
+
+                cmd="rm -rf import.tar.gz"
+                echo $cmd
+                $cmd       
+                ;;
+
             "pull_backup")
                 cmd="export CTR_ID=$(docker ps -q -f name=relay)"
                 echo $cmd
@@ -144,6 +158,7 @@ function_menu_backup () {
                 echo $cmd
                 $cmd     
                 ;;
+
             "quit")
                 break
                 ;;

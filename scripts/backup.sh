@@ -4,7 +4,7 @@
 URL=ubuntu@box-1.cryptoforge.org
 
 PS3='Please enter your choice: '
-options=("tar_import" "untar_import" "push" "pull" "quit")
+options=("tar_import" "push" "pull" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -12,20 +12,6 @@ do
             cmd="tar -cvzf ./backups/import.tar.gz -C ./backups/.lnd ."
             echo $cmd
             $cmd    
-            ;;
-
-        "untar_import")
-            cmd="mkdir -p /box/.lnd"
-            echo $cmd
-            $cmd 
-
-            cmd="tar -xzvf import.tar.gz -C /box/.lnd"
-            echo $cmd
-            $cmd 
-
-            cmd="rm -rf import.tar.gz"
-            echo $cmd
-            $cmd       
             ;;
 
         "push")
