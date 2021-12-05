@@ -5,11 +5,23 @@ URL=ubuntu@box-1.cryptoforge.org
 
 function_menu_backup () {
   PS3='Please enter your choice: '
-    options=("pull_lnd" "quit")
+    options=("tar_import" "push_import" "pull_export" "quit")
     select opt in "${options[@]}"
     do
         case $opt in
-            "pull_lnd")
+            "tar_import")
+                cmd="tar -cvzf ./backups/import.tar.gz -C ./backups/.lnd ."
+                echo $cmd
+                $cmd    
+                ;;
+
+            "push_import")
+                cmd="scp -i ~/.ssh/box ./backups/import.tar.gz $URL:/box/import.tar.gz"
+                echo $cmd
+                $cmd            
+                ;;
+
+            "pull_export")
                 cmd="scp -i ~/.ssh/box -r $URL:/box/export.tar.gz ."
                 echo $cmd
                 $cmd      
