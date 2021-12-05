@@ -4,7 +4,7 @@
 URL=ubuntu@box-1.cryptoforge.org
 
 PS3='Please enter your choice: '
-options=("tar_import" "tar_export" "push" "pull" "quit")
+options=("tar_import" "untar_import" "push" "pull" "quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -14,7 +14,7 @@ do
             $cmd    
             ;;
 
-        "tar_export")
+        "untar_import")
             cmd="tar -xzvf import.tar.gz"
             echo $cmd
             $cmd    
