@@ -15,6 +15,10 @@ http://game-1.playentertainment.online:3000/connect
 http://game-2.playentertainment.online:3000/connect
 ```
 
+``` proxy
+https://crt.sh/?q=box-1.cryptoforge.org
+```
+
 ## Setup
 
 ```
