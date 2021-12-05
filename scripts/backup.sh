@@ -15,17 +15,17 @@ do
             ;;
 
         "untar_import")
-            cmd="tar -xzvf import.tar.gz"
+            cmd="tar -xzvf import.tar.gz -C /box/.lnd"
             echo $cmd
             $cmd 
 
-            cmd="mv import.tar.gz .lnd"
+            cmd="rm -rf import.tar.gz"
             echo $cmd
             $cmd       
             ;;
 
         "push")
-            cmd="scp -i ~/.ssh/box -r ./backups/import.tar.gz $URL:/box/import.tar.gz"
+            cmd="scp -i ~/.ssh/box ./backups/import.tar.gz $URL:/box/import.tar.gz"
             echo $cmd
             $cmd            
             ;;
