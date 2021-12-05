@@ -19,7 +19,7 @@ do
             echo $cmd
             $cmd 
 
-            cmd="mv import .lnd"
+            cmd="mv import.tar.gz .lnd"
             echo $cmd
             $cmd       
             ;;
