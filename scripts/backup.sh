@@ -9,7 +9,7 @@ select opt in "${options[@]}"
 do
     case $opt in
         "tar_import")
-            cmd="tar -cvzf ./backups/import.tar.gz ./backups/.lnd"
+            cmd="tar -cvzf ./backups/import.tar.gz -C ./backups/.lnd ."
             echo $cmd
             $cmd    
             ;;
@@ -17,7 +17,11 @@ do
         "untar_import")
             cmd="tar -xzvf import.tar.gz"
             echo $cmd
-            $cmd    
+            $cmd 
+
+            cmd="mv import .lnd"
+            echo $cmd
+            $cmd       
             ;;
 
         "push")
