@@ -1,31 +1,8 @@
-# Docker Instructions
+# Setup box
 
-```
-docker build -t cryptoforge-relay -f Dockerfile.relay .
-
-docker login -u cryptoforge
-docker tag cryptoforge-relay:latest cryptoforge/cryptoforge-relay:latest  
-docker push cryptoforge/cryptoforge-relay:latest 
-
-docker-compose up
-```
-
-``` N2N2
-docker build -t n2n2-relay -f Dockerfile.mainnet .
-
-docker login -u cryptoforge
-docker tag n2n2-relay:latest cryptoforge/n2n2-relay:latest  
-docker push cryptoforge/n2n2-relay:latest 
-
-docker-compose up
-```
-
-``` SPHINX
-docker build -t sphinx-relay -f Dockerfile.mainnet .
-
-docker login -u cryptoforge
-docker tag sphinx-relay:latest cryptoforge/sphinx-relay:latest  
-docker push cryptoforge/sphinx-relay:latest 
-
-docker-compose up
-```
+1. Use ansible to create cluster.
+2. Create backup import.
+3. Import backup into box.
+4. Build docker container for game.
+5. Modify sphinx relant files.
+6. 

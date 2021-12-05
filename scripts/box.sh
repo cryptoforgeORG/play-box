@@ -81,10 +81,16 @@ function_menu_logs () {
 
 function_menu_backup () {
   PS3='Please enter your choice: '
-    options=("untar_import" "pull_backup" "push_backup" "apply_backup" "quit")
+    options=("tar_export" "untar_import" "pull_backup" "push_backup" "apply_backup" "quit")
     select opt in "${options[@]}"
     do
         case $opt in
+            "tar_export")
+                cmd="tar -cvzf ./export.tar.gz -C ./.lnd ."
+                echo $cmd
+                $cmd    
+                ;;
+
             "untar_import")
                 cmd="mkdir -p /box/.lnd"
                 echo $cmd
