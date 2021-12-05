@@ -15,6 +15,10 @@ do
             ;;
 
         "untar_import")
+            cmd="mkdir -p /box/.lnd"
+            echo $cmd
+            $cmd 
+
             cmd="tar -xzvf import.tar.gz -C /box/.lnd"
             echo $cmd
             $cmd 
