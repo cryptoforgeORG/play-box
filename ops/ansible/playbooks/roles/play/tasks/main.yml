@@ -171,6 +171,15 @@
     line: "PHOTON_APP_ID={{ hostvars[inventory_hostname].photon_app_id }}"
   become: yes
 
+- name: Set PHOTON_REGION
+  lineinfile:
+    dest: /etc/environment
+    create: yes
+    state: present
+    regexp: "^PHOTON_REGION"
+    line: "PHOTON_REGION={{ hostvars[inventory_hostname].photon_region }}"
+  become: yes
+
 - name: Set SOCKET_ENDPOINT
   lineinfile:
     dest: /etc/environment

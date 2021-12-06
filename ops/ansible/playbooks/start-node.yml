@@ -106,6 +106,7 @@
     scheme: "{{ config.scheme }}"
     alias: "{{ config.alias }}"
     photon_app_id: "{{ config.photon_app_id }}"
+    photon_region: "{{ config.photon_region }}"
 
 - name: Add to Route 53
   community.aws.route53:

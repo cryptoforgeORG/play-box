@@ -8,7 +8,7 @@
 6. Modify sphinx relevant files.
 7. Start relay.
 8. Verify if relay online getinfo.
-   1. https://box-1.cryptoforge.org.
+   1. https://box-1.cryptoforge.org/connect.
 9.  Update Zion configs
    2.  /game/masters-of-conquest-headless/masters-of-conquest-headless_Data/StreamingAssets
 10. Start game.

@@ -105,7 +105,8 @@ router.get(
   asyncErrorHandler(async (req: any, res: any) => {
     res.status(200).json({
       env: {
-        photon_app_id: process.env.PHOTON_APP_ID
+        photon_app_id: process.env.PHOTON_APP_ID,
+        photon_region: process.env.PHOTON_REGION
       }
     });
   })
