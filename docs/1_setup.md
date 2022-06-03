@@ -18,6 +18,22 @@
    2.  Review moc.log and telegram chat.
 
 ## LOCAL
+Modify env
+```
+code /etc/environment
+
+# Add below
+
+# CRYPTOFORGE
+PORT=8443
+NODE_HOST=0.0.0.0
+DASHBOARD_USERNAME=play
+DASHBOARD_PASSWORD=play
+
+PHOTON_APP_ID=fa5e21e8-531b-49fe-93ac-4915068825ea
+PHOTON_REGION=usw
+```
+
 Start Game Module
 ```
 ./scripts/box.sh 
@@ -25,3 +41,13 @@ Start Game Module
 2
 ```
 
+Bash Into Game
+```
+./scripts/box.sh 
+2
+2
+
+tail -f /var/log/supervisor/game.log 
+
+```
+[Local Dashboard](http://0.0.0.0:8443/)
