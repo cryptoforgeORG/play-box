@@ -1,5 +1,7 @@
 # Setup box
 
+## PRODUCTION
+
 1. Use ansible to create cluster with box.
 2. Restore from backup (Optional)
    1. Stop relay. 
@@ -15,3 +17,9 @@
    1.  Deploy game-client via dashboad http://box-1.cryptoforge.org:8443
    2.  Review moc.log and telegram chat.
 
+## LOCAL
+```
+./scripts/box.sh 
+2
+2
+```
