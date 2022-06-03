@@ -18,8 +18,10 @@
    2.  Review moc.log and telegram chat.
 
 ## LOCAL
+Start Game Module
 ```
 ./scripts/box.sh 
 2
 2
 ```
+
